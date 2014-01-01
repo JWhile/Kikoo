@@ -1,4 +1,4 @@
-# Kikoo
+# ![Kikoo](/icons/kikoo_32.png) Kikoo
 
 _..._
 
