@@ -75,6 +75,18 @@ a:hover{
          .cookie-open .cookie-content{
              display:block;
          }
+            .cookie-menu{
+                background:#3a3a3a;
+                border-bottom:1px solid #111;
+            }
+                .cookie-menu a{
+                    display:inline-block;
+                    margin:0 3px;
+                    transition:color .1s;
+                }
+                .cookie-menu a:hover{
+                    color:#ccc;
+                }
             .cookie-p{
                 margin:5px 0;
                 padding:5px;

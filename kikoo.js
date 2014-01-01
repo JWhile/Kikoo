@@ -152,19 +152,20 @@ function Cookie(id, cookie, app)
             }))
         .append(new Builder('div')
             .className('cookie-content')
-            .append(new Builder('a')
-                .text('modifier')
-                .event('click', function()
-                {
-                    // Modifier
-                }))
-            .append(new Builder('a')
-                .className('right')
-                .text('supprimer')
-                .event('click', function()
-                {
-                    self.app.delCookie(self);
-                }))
+            .append(new Builder('div')
+                .className('cookie-menu')
+                .append(new Builder('a')
+                    .text('modifier')
+                    .event('click', function()
+                    {
+                        // Modifier
+                    }))
+                .append(new Builder('a')
+                    .text('supprimer')
+                    .event('click', function()
+                    {
+                        self.app.delCookie(self);
+                    })))
             .append(new Builder('div')
                 .className('cookie-p')
                 .text(this.cookie.domain + this.cookie.path +'\n'+ ((this.cookie.session)? 'Cookie de session' : new Date(this.cookie.expirationDate * 1000).toString())))
