@@ -1,0 +1,7 @@
+{
+    "manifest_version": 2,
+
+    "name": "Kikoo",
+    "description": "Modifier ses cookies comme un kikoo !",
+    "version": "0.1.0",
+}
