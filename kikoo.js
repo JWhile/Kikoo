@@ -146,9 +146,9 @@ function Cookie(id, cookie, app)
             .text(self.cookie.name)
             .event('click', function()
             {
-                self.className(self.open? 'cookie open' : 'cookie');
-
                 self.open = !self.open;
+
+                self.className(self.open? 'cookie-open' : 'cookie');
             }))
         .append(new Builder('div')
             .className('cookie-content')

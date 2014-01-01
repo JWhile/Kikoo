@@ -41,8 +41,39 @@ a:hover{
             opacity:1;
          }
 #content{
-    padding:10px 0;
+    padding:5px;
 }
+    .cookie{
+        transition-property:box-shadow,border-color,margin;
+        transition-duration:.2s;
+    }
+    .cookie,.cookie-open{
+        margin:8px 10px;
+        background:#888;
+        box-shadow:0 0 1px #444;
+        border:1px solid #191919;
+        border-radius:1px;
+    }
+    .cookie:hover,.cookie-open{
+        margin:8px 6px;
+        box-shadow:0 0 3px #222;
+        border-color:#111;
+        transition:border-color .45s;
+    }
+        .cookie-head{
+            cursor:pointer;
+            padding:2px 4px;
+            background:#333;
+        }
+        .cookie-content{
+            display:none;
+            text-align:center;
+            font-size:12px;
+            color:#333;
+        }
+         .cookie-open .cookie-content{
+             display:block;
+         }
 #foot{
     padding:2px 5px 3px 0;
     background:#333;
