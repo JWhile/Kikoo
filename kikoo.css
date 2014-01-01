@@ -19,7 +19,7 @@ a:hover{
 #head{
     padding:6px 0 3px 25px;
     background:#333 url('icons/kikoo_16.png') 5px 5px no-repeat;
-    box-shadow:0 0 5px #292929;
+    box-shadow:0 0 7px #111;
     border-bottom:1px solid #161616;
 }
     #logo{
@@ -42,6 +42,7 @@ a:hover{
          }
 #content{
     padding:5px;
+    box-shadow:inset 0 0 4px #333;
 }
     .cookie{
         transition-property:box-shadow,border-color,margin;
@@ -74,6 +75,25 @@ a:hover{
          .cookie-open .cookie-content{
              display:block;
          }
+            .cookie-p{
+                margin:5px 0;
+                padding:5px;
+                background:#4a4a4a;
+                border-top:1px solid #333;
+                border-bottom:1px solid #333;
+                color:#999;
+            }
+                .cookie-value{
+                    word-break:break-all;
+                }
+            .cookie-info{
+                display:inline-block;
+                margin:1px 2px;
+                padding:5px;
+                background:#4a4a4a;
+                box-shadow:1px 1px 0 #999;
+                color:#999;
+            }
 #foot{
     padding:2px 5px 3px 0;
     background:#333;

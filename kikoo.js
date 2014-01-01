@@ -143,7 +143,7 @@ function Cookie(id, cookie, app)
     this.className('cookie')
         .append(new Builder('div')
             .className('cookie-head')
-            .text(self.cookie.name)
+            .text(this.cookie.name)
             .event('click', function()
             {
                 self.open = !self.open;
@@ -164,8 +164,22 @@ function Cookie(id, cookie, app)
                 .event('click', function()
                 {
                     self.app.delCookie(self);
-                })));
-
+                }))
+            .append(new Builder('div')
+                .className('cookie-p')
+                .text(this.cookie.domain + this.cookie.path +'\n'+ ((this.cookie.session)? 'Cookie de session' : new Date(this.cookie.expirationDate * 1000).toString())))
+            .append(new Builder('div')
+                .className('cookie-info')
+                .text('Secure\n'+ this.cookie.secure))
+            .append(new Builder('div')
+                .className('cookie-info')
+                .text('HostOnly\n'+ this.cookie.hostOnly))
+            .append(new Builder('div')
+                .className('cookie-info')
+                .text('HttpOnly\n'+ this.cookie.httpOnly))
+            .append(new Builder('div')
+                .className('cookie-p cookie-value')
+                .text(this.cookie.value)));
 }
 fus.extend(Cookie, Builder);
 
