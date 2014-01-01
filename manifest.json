@@ -5,9 +5,18 @@
     "description": "Modifier ses cookies comme un kikoo !",
     "version": "0.1.0",
 
+    "icons":
+    {
+        "16": "icons/kikoo_16.png",
+        "32": "icons/kikoo_32.png",
+        "64": "icons/kikoo_64.png",
+        "128": "icons/kikoo_128.png"
+    },
+
     "browser_action":
     {
         "default_title": "Clique pour modifier tes cookies comme un kikoo !",
+        "default_icon": "icons/kikoo_32.png",
         "default_popup": "kikoo.html"
     }
 }
