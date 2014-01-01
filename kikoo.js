@@ -36,31 +36,30 @@ KikooApp.prototype.delCookie = function(cookie)
 
     cookie.css('border-color', '');
 
-    setTimeout(function()
+    chrome.cookies.remove({'url': self.url.url, 'name': cookie.cookie.name}, function(details)
     {
-        chrome.cookies.remove({'url': self.url.url, 'name': cookie.cookie.name}, function(details)
+        if(details == null)
         {
-            if(details == null)
-            {
-                cookie.css('border-color', '#c10');
+            cookie.css('border-color', '#c10');
 
-                console.log(chrome.runtime.lastError);
-            }
-            else
-            {
-                cookie.remove();
+            console.log(chrome.runtime.lastError);
+        }
+        else
+        {
+            cookie.remove();
 
-                for(var i = 0; i < self.cookies.length; ++i)
+            for(var i = 0; i < self.cookies.length; ++i)
+            {
+                if(self.cookies[i].id === cookie.id)
                 {
-                    if(self.cookies[i].id === cookie.id)
-                    {
-                        self.cookies.splice(i, 1);
-                        break;
-                    }
+                    self.cookies.splice(i, 1);
+                    break;
                 }
             }
-        });
-    }, 450);
+
+            self.update();
+        }
+    });
 };
 // function load():void
 KikooApp.prototype.load = function()
@@ -115,7 +114,7 @@ KikooUI.prototype.setCookies = function(cookies)
 
     if(cookies.length === 0)
     {
-        this.content.html('Aucun cookie pour ce site.');
+        this.content.text('Aucun cookie pour ce site.');
     }
     else
     {
