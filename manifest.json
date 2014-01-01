@@ -4,4 +4,10 @@
     "name": "Kikoo",
     "description": "Modifier ses cookies comme un kikoo !",
     "version": "0.1.0",
+
+    "browser_action":
+    {
+        "default_title": "Clique pour modifier tes cookies comme un kikoo !",
+        "default_popup": "kikoo.html"
+    }
 }
