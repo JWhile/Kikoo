@@ -180,6 +180,8 @@ function KikooForm(app)
     this.expirationDate = new Builder('input').attr('type', 'date');
     this.value = new Builder('input').attr('type', 'text');
 
+    var self = this;
+
     this.attr('id', 'form')
         .append(new Builder('div')
             .append(new Builder('label')
@@ -208,7 +210,19 @@ function KikooForm(app)
         .append(new Builder('div')
             .append(new Builder('label')
                 .text('Valeur'))
-            .append(this.value));
+            .append(this.value))
+        .append(new Builder('a')
+            .text('Valider')
+            .event('click', function()
+            {
+                self.submit();
+            }))
+        .append(new Builder('a')
+            .text('Annuler')
+            .event('click', function()
+            {
+                self.cancel();
+            }));
 }
 // function setCookie(Object|chrome.Cookie cookie)
 KikooForm.prototype.setCookie = function(cookie)
@@ -220,7 +234,7 @@ KikooForm.prototype.setCookie = function(cookie)
     this.path.attr('value', cookie.path || '/');
     this.secure.attr('checked', !!cookie.secure);
     this.httpOnly.attr('checked', !!cookie.httpOnly);
-    this.expirationDate.attr('value', cookie.expirationDate || Date.now());
+    this.expirationDate.attr('value', cookie.expirationDate || new Date());
     this.value.attr('value', cookie.value || '');
 
     this.css('display', 'block');
