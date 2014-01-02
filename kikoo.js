@@ -9,7 +9,7 @@
 // class KikooApp
 function KikooApp()
 {
-    this.ui = new KikooUI(); // :KikooUI
+    this.ui = new KikooUI(this); // :KikooUI
 
     this.url = null; // :Url
 
@@ -85,9 +85,13 @@ KikooApp.prototype.load = function()
 };
 
 // class KikooUI extends Builder
-function KikooUI()
+function KikooUI(app)
 {
     this.super('div');
+
+    this.app = app;
+
+    var self = this;
 
     new Builder('div')
         .attr('id', 'head')
@@ -107,7 +111,7 @@ function KikooUI()
                 .text('Actualiser')
                 .event('click', function()
                 {
-                    // Actualiser
+                    self.app.load();
                 })))
         .insert(this);
 
