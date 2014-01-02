@@ -110,12 +110,12 @@ function KikooUI(app)
     var self = this;
 
     new Builder('div')
-        .attr('id', 'head')
+        .set('id', 'head')
         .append(new Builder('p')
-            .attr('id', 'logo')
+            .set('id', 'logo')
             .html('<b>Kikoo</b>! <span>Cookie</span>'))
         .append(new Builder('div')
-            .attr('id', 'plus')
+            .set('id', 'plus')
             .text('+')
             .append(new Builder('a')
                 .text('Ajouter')
@@ -135,12 +135,12 @@ function KikooUI(app)
         .insert(this);
 
     this.content = new Builder('div')
-        .attr('id', 'content')
+        .set('id', 'content')
         .html('<i>Chargement...</i>')
         .insert(this);
 
     new Builder('div')
-        .attr('id', 'foot')
+        .set('id', 'foot')
         .html('By <a href="https://github.com/JWhile">juloo</a>')
         .insert(this);
 }
@@ -172,17 +172,17 @@ function KikooForm(app)
 
     this.cookie = null;
 
-    this.name = new Builder('input').attr('type', 'text');
-    this.domain = new Builder('input').attr('type', 'text');
-    this.path = new Builder('input').attr('type', 'text');
-    this.secure = new Builder('input').attr('type', 'checkbox');
-    this.httpOnly = new Builder('input').attr('type', 'checkbox');
-    this.expirationDate = new Builder('input').attr('type', 'date');
-    this.value = new Builder('input').attr('type', 'text');
+    this.name = new Builder('input').set('type', 'text');
+    this.domain = new Builder('input').set('type', 'text');
+    this.path = new Builder('input').set('type', 'text');
+    this.secure = new Builder('input').set('type', 'checkbox');
+    this.httpOnly = new Builder('input').set('type', 'checkbox');
+    this.expirationDate = new Builder('input').set('type', 'date');
+    this.value = new Builder('input').set('type', 'text');
 
     var self = this;
 
-    this.attr('id', 'form')
+    this.set('id', 'form')
         .append(new Builder('div')
             .append(new Builder('label')
                 .text('Nom'))
@@ -229,13 +229,13 @@ KikooForm.prototype.setCookie = function(cookie)
 {
     this.cookie = cookie;
 
-    this.name.attr('value', cookie.name || '');
-    this.domain.attr('value', cookie.domain || this.app.url.domain);
-    this.path.attr('value', cookie.path || '/');
-    this.secure.attr('checked', !!cookie.secure);
-    this.httpOnly.attr('checked', !!cookie.httpOnly);
-    this.expirationDate.attr('value', cookie.expirationDate || new Date());
-    this.value.attr('value', cookie.value || '');
+    this.name.set('value', cookie.name || '');
+    this.domain.set('value', cookie.domain || this.app.url.domain);
+    this.path.set('value', cookie.path || '/');
+    this.secure.set('checked', !!cookie.secure);
+    this.httpOnly.set('checked', !!cookie.httpOnly);
+    this.expirationDate.set('value', cookie.expirationDate || new Date());
+    this.value.set('value', cookie.value || '');
 
     this.css('display', 'block');
 };
