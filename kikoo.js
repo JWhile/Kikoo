@@ -301,7 +301,7 @@ function Cookie(id, cookie, app)
                     .text('modifier')
                     .event('click', function()
                     {
-                        self.app.ui.setCookie(self.cookie);
+                        self.app.ui.form.setCookie(self.cookie);
                     }))
                 .append(new Builder('a')
                     .text('supprimer')
