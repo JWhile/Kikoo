@@ -94,13 +94,21 @@ function KikooUI()
         .append(new Builder('p')
             .attr('id', 'logo')
             .html('<b>Kikoo</b>! <span>Cookie</span>'))
-        .append(new Builder('a')
+        .append(new Builder('div')
             .attr('id', 'plus')
-            .text('Ajouter')
-            .event('click', function()
-            {
-                // Ajouter
-            }))
+            .text('+')
+            .append(new Builder('a')
+                .text('Ajouter')
+                .event('click', function()
+                {
+                    // Ajouter
+                }))
+            .append(new Builder('a')
+                .text('Actualiser')
+                .event('click', function()
+                {
+                    // Actualiser
+                })))
         .insert(this);
 
     this.content = new Builder('div')
