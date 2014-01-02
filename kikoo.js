@@ -74,6 +74,8 @@ KikooApp.prototype.load = function()
 
         chrome.cookies.getAll({'domain': self.url.domain}, function(cookies)
         {
+            self.cookies = [];
+
             for(var i = 0; i < cookies.length; ++i)
             {
                 self.cookies.push(new Cookie(++self.cookieId, cookies[i], self));
