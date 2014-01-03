@@ -6,7 +6,7 @@
  * kikoo.js
  */
 
-// class CookieApp extends Builder
+// class CookieApp extends app
 function CookieApp()
 {
     this.url = null; // :Url
@@ -15,18 +15,11 @@ function CookieApp()
 
     this.cookies = []; // :Array<Cookie>
 
-    this.super('div');
+    this.super('cookie');
 
     var self = this;
 
-    this.set('id', 'cookie')
-        .className('app');
-
-    new Builder('div')
-        .className('head')
-        .append(new Builder('p')
-            .className('logo')
-            .html('<b>Kikoo</b>! <span>Cookie</span>'))
+    this.head
         .append(new Builder('div')
             .className('plus')
             .text('+')
@@ -41,21 +34,12 @@ function CookieApp()
                 .event('click', function()
                 {
                     self.load();
-                })))
-        .insert(this);
+                })));
 
     this.form = new CookieForm(this)
-        .insert(this);
+        .insert(this, this.content);
 
-    this.content = new Builder('div')
-        .className('content')
-        .html('<i>Chargement...</i>')
-        .insert(this);
-
-    new Builder('div')
-        .className('foot')
-        .html('By <a href="https://github.com/JWhile">juloo</a>')
-        .insert(this);
+    this.content.html('<i>Chargement...</i>');
 
     this.load();
 }
@@ -156,7 +140,7 @@ CookieApp.prototype.load = function()
         });
     });
 };
-fus.extend(CookieApp, Builder);
+fus.extend(CookieApp, App);
 
 // class CookieForm extends Builder
 function CookieForm(app)

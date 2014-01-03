@@ -36,38 +36,21 @@ Kikoo.prototype.move = function(index)
     }, 340);
 };
 
-// class MainApp extends Builder
-function MainApp(main)
+// class MainApp extends App
+function MainApp(kikoo)
 {
-    this.super('div');
+    this.super('main');
 
-    this.main = main;
+    this.kikoo = kikoo;
 
-    this.set('id', 'main')
-        .className('app');
-
-    new Builder('div')
-        .className('head')
-        .append(new Builder('p')
-            .className('logo')
-            .html('<b>Kikoo</b>! <span>...</span>'))
-        .insert(this);
-
-    this.content = new Builder('div')
-        .className('content')
+    this.content
         .append(new Builder('p')
             .html('<b>Bienvenue kikoo !</b><br /><i>Choisi une application</i>'))
         .append(new Builder('p')
             .append(new Builder('a')
                 .text('Cookie'))
-            .add('<br /><i>Modifie tes cookies comme un kikoo !</i>'))
-        .insert(this);
-
-    new Builder('div')
-        .className('foot')
-        .html('By <a href="https://github.com/JWhile">juloo</a>')
-        .insert(this);
+            .add('<br /><i>Modifie tes cookies comme un kikoo !</i>'));
 }
-fus.extend(MainApp, Builder);
+fus.extend(MainApp, App);
 
 var kikoo = new Kikoo();
