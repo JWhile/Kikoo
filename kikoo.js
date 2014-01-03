@@ -23,7 +23,7 @@ function KikooApp()
         .className('head')
         .append(new Builder('p')
             .className('logo')
-            .html('<b>Kikoo</b>! <span>'+ name +'</span>'))
+            .html('<b>Kikoo</b>! <span>Cookie</span>'))
         .append(new Builder('div')
             .className('plus')
             .text('+')
@@ -254,6 +254,8 @@ KikooForm.prototype.setCookie = function(cookie)
     this.value.set('value', cookie.value || '');
 
     this.css('display', 'block');
+
+    window.scrollTo(0, 0);
 };
 // function submit():void
 KikooForm.prototype.submit = function()
