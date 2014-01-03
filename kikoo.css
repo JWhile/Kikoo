@@ -17,6 +17,7 @@ a:hover{
     text-decoration:none;
 }
 .app{
+    position:relative;
     display:inline-block;
     width:210px;
 }
@@ -41,7 +42,7 @@ a:hover{
                 font-size:10px;
                 transition:opacity .3s;
             }
-             .head:hover #logo span{
+             .head:hover .logo span{
                 opacity:1;
              }
     .content{
