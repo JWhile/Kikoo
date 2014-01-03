@@ -14,6 +14,7 @@ function CookieApp()
     this.cookieId = 0; // :int
 
     this.cookies = []; // :Array<Cookie>
+
     this.super('div');
 
     var self = this;
@@ -143,9 +144,12 @@ CookieApp.prototype.load = function()
         {
             self.cookies = [];
 
-            for(var i = 0; i < cookies.length; ++i)
+            if(cookies != null)
             {
-                self.cookies.push(new Cookie(++self.cookieId, cookies[i], self));
+                for(var i = 0; i < cookies.length; ++i)
+                {
+                    self.cookies.push(new Cookie(++self.cookieId, cookies[i], self));
+                }
             }
 
             self.update();
