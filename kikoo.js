@@ -6,21 +6,72 @@
  * kikoo.js
  */
 
-// class CookieApp
+// class CookieApp extends Builder
 function CookieApp()
 {
-    this.ui = new CookieUI(this); // :CookieUI
-
     this.url = null; // :Url
 
     this.cookieId = 0; // :int
 
     this.cookies = []; // :Array<Cookie>
+    this.super('div');
+
+    var self = this;
+
+    this.set('id', 'cookie')
+        .className('app');
+
+    new Builder('div')
+        .className('head')
+        .append(new Builder('p')
+            .className('logo')
+            .html('<b>Kikoo</b>! <span>Cookie</span>'))
+        .append(new Builder('div')
+            .className('plus')
+            .text('+')
+            .append(new Builder('a')
+                .text('Ajouter')
+                .event('click', function()
+                {
+                    self.form.setCookie(null);
+                }))
+            .append(new Builder('a')
+                .text('Actualiser')
+                .event('click', function()
+                {
+                    self.load();
+                })))
+        .insert(this);
+
+    this.form = new CookieForm(this)
+        .insert(this);
+
+    this.content = new Builder('div')
+        .className('content')
+        .html('<i>Chargement...</i>')
+        .insert(this);
+
+    new Builder('div')
+        .className('foot')
+        .html('By <a href="https://github.com/JWhile">juloo</a>')
+        .insert(this);
 }
 // function update():void
 CookieApp.prototype.update = function()
 {
-    this.ui.setCookies(this.cookies);
+    this.content.clear();
+
+    if(cookies.length === 0)
+    {
+        this.content.text('Aucun cookie pour ce site.');
+    }
+    else
+    {
+        for(var i = 0; i < cookies.length; ++i)
+        {
+            this.content.append(cookies[i]);
+        }
+    }
 };
 // function addCookie(Object details):void
 CookieApp.prototype.addCookie = function(details)
@@ -80,8 +131,6 @@ CookieApp.prototype.delCookie = function(cookie, callback)
 // function load():void
 CookieApp.prototype.load = function()
 {
-    this.ui.insert(document.body);
-
     var self = this;
 
     chrome.tabs.query({'highlighted': true, 'currentWindow': true}, function(tabs)
@@ -101,72 +150,7 @@ CookieApp.prototype.load = function()
         });
     });
 };
-
-// class CookieUI extends Builder
-function CookieUI(app)
-{
-    this.super('div');
-
-    this.app = app; // :CookieApp
-
-    var self = this;
-
-    this.set('id', 'cookie')
-        .className('app');
-
-    new Builder('div')
-        .className('head')
-        .append(new Builder('p')
-            .className('logo')
-            .html('<b>Kikoo</b>! <span>Cookie</span>'))
-        .append(new Builder('div')
-            .className('plus')
-            .text('+')
-            .append(new Builder('a')
-                .text('Ajouter')
-                .event('click', function()
-                {
-                    self.form.setCookie(null);
-                }))
-            .append(new Builder('a')
-                .text('Actualiser')
-                .event('click', function()
-                {
-                    self.app.load();
-                })))
-        .insert(this);
-
-    this.form = new CookieForm(this.app)
-        .insert(this);
-
-    this.content = new Builder('div')
-        .className('content')
-        .html('<i>Chargement...</i>')
-        .insert(this);
-
-    new Builder('div')
-        .className('foot')
-        .html('By <a href="https://github.com/JWhile">juloo</a>')
-        .insert(this);
-}
-fus.extend(CookieUI, Builder);
-// function setCookies(Array<Cookie> cookies):void
-CookieUI.prototype.setCookies = function(cookies)
-{
-    this.content.clear();
-
-    if(cookies.length === 0)
-    {
-        this.content.text('Aucun cookie pour ce site.');
-    }
-    else
-    {
-        for(var i = 0; i < cookies.length; ++i)
-        {
-            this.content.append(cookies[i]);
-        }
-    }
-};
+fus.extend(CookieApp, Builder);
 
 // class CookieForm extends Builder
 function CookieForm(app)
@@ -346,7 +330,7 @@ function Cookie(id, cookie, app)
                     .text('modifier')
                     .event('click', function()
                     {
-                        self.app.ui.form.setCookie(self);
+                        self.app.form.setCookie(self);
                     }))
                 .append(new Builder('a')
                     .text('supprimer')
