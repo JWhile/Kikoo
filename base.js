@@ -1,6 +1,8 @@
 /**
  * Kikoo
  *
+ * https://github.com/JWhile/Kikoo
+ *
  * base.js
  */
 

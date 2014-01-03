@@ -1,7 +1,9 @@
 /**
  * Kikoo
  *
- * main.js
+ * https://github.com/JWhile/Kikoo
+ *
+ * kikoo.js
  */
 
 // class Kikoo
@@ -56,4 +58,5 @@ function MainApp(main)
 }
 fus.extend(MainApp, App);
 
+// main
 var kikoo = new Kikoo();
