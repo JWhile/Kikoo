@@ -111,13 +111,16 @@ function CookieUI(app)
 
     var self = this;
 
+    this.set('id', 'cookie')
+        .className('app');
+
     new Builder('div')
-        .set('id', 'head')
+        .className('head')
         .append(new Builder('p')
-            .set('id', 'logo')
+            .className('logo')
             .html('<b>Kikoo</b>! <span>Cookie</span>'))
         .append(new Builder('div')
-            .set('id', 'plus')
+            .className('plus')
             .text('+')
             .append(new Builder('a')
                 .text('Ajouter')
@@ -137,12 +140,12 @@ function CookieUI(app)
         .insert(this);
 
     this.content = new Builder('div')
-        .set('id', 'content')
+        .className('content')
         .html('<i>Chargement...</i>')
         .insert(this);
 
     new Builder('div')
-        .set('id', 'foot')
+        .className('foot')
         .html('By <a href="https://github.com/JWhile">juloo</a>')
         .insert(this);
 }
@@ -192,7 +195,7 @@ function CookieForm(app)
 
     var self = this;
 
-    this.set('id', 'form')
+    this.className('form')
         .append(new Builder('div')
             .append(new Builder('label')
                 .text('Nom'))
