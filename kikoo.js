@@ -145,6 +145,8 @@ KikooApp.prototype.load = function()
 
             if(cookies != null)
             {
+                cookies = cookies.reverse();
+
                 for(var i = 0; i < cookies.length; ++i)
                 {
                     self.cookies.push(new Cookie(++self.cookieId, cookies[i], self));
