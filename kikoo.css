@@ -1,5 +1,4 @@
 body{
-    overflow-x:hidden;
     width:210px;
     margin:0;
     background:#595959;
@@ -17,179 +16,161 @@ a{
 a:hover{
     text-decoration:none;
 }
-.scroll{
-    position:relative;
-    transition:left .35s;
+.head{
+    padding:6px 0 3px 25px;
+    background:#333 url('icons/kikoo_16.png') 5px 5px no-repeat;
+    box-shadow:0 0 7px #111;
+    border-bottom:1px solid #161616;
 }
-    .app{
-        position:absolute;
-        display:inline-block;
-        width:210px;
-        vertical-align:top;
+    .logo{
+        line-height:14px;
     }
-        .head{
-            padding:6px 0 3px 25px;
-            background:#333 url('icons/kikoo_16.png') 5px 5px no-repeat;
-            box-shadow:0 0 7px #111;
-            border-bottom:1px solid #161616;
+        .logo b{
+            font-size:16px;
+            transition:color .2s;
         }
-            .logo{
-                line-height:14px;
-            }
-                .logo b{
-                    font-size:16px;
-                    transition:color .2s;
-                }
-                 .head:hover .logo b{
-                     color:#e9e9e9;
-                 }
-                .logo span{
-                    opacity:0;
-                    font-size:10px;
-                    transition:opacity .3s;
-                }
-                 .head:hover .logo span{
-                    opacity:1;
-                 }
-        .content{
-            padding:5px;
-            box-shadow:inset 0 0 4px #333;
+         .head:hover .logo b{
+             color:#e9e9e9;
+         }
+        .logo span{
+            opacity:0;
+            font-size:10px;
+            transition:opacity .3s;
         }
-        .foot{
-            padding:2px 5px 3px 0;
-            background:#333;
-            border-top:1px solid #161616;
-            text-align:right;
-            font-size:11px;
+         .head:hover .logo span{
+            opacity:1;
+         }
+    .plus{
+        position:absolute;
+        top:0;
+        right:0;
+        padding:1px 8px;
+        background:#252525;
+        box-shadow:0 0 2px #111;
+        text-align:right;
+        font-size:12px;
+    }
+    .plus:hover{
+        background:#232323;
+        color:#ccc;
+    }
+        .plus a{
+            display:none;
         }
-#main{
-    left:0;
-}
-#cookie{
-    left:210px;
-}
-    /* .head */
-        .plus{
-            position:absolute;
-            top:0;
-            right:0;
-            padding:1px 8px;
-            background:#252525;
-            box-shadow:0 0 2px #111;
-            text-align:right;
-            font-size:12px;
-        }
-        .plus:hover{
-            background:#232323;
+        .plus a:hover{
             color:#ccc;
         }
-            .plus a{
-                display:none;
+         .plus:hover a{
+            display:block;
+         }
+.form{
+    display:none;
+    background:#3a3a3a;
+    border-top:1px solid #333;
+    border-bottom:1px solid #222;
+}
+    .form div{
+        margin:5px 0;
+        padding-left:5px;
+    }
+        .form label{
+            display:inline-block;
+            width:70px;
+        }
+        .form input[type="text"]{
+            width:125px;
+        }
+        .form input[type="text"].input-value,.form input[type="datetime-local"]{
+            width:195px;
+        }
+        .form input[type="text"], .form input[type="datetime-local"]{
+            margin:0;
+            background:rgba(0,0,0,0.3);
+            border:1px solid #9a9a9a;
+            color:#b9b9b9;
+        }
+        .form-menu{
+            margin:5px 0;
+            text-align:center;
+        }
+            .form-menu a{
+                display:inline-block;
+                margin:0 10px;
+                transition:color .1s;
             }
-            .plus a:hover{
+            .form-menu a:hover{
                 color:#ccc;
             }
-             .plus:hover a{
-                display:block;
-             }
-    .form{
-        display:none;
-        background:#3a3a3a;
-        border-top:1px solid #333;
-        border-bottom:1px solid #222;
+.content{
+    padding:5px;
+    box-shadow:inset 0 0 4px #333;
+}
+    .cookie{
+        transition-property:box-shadow,border-color,margin;
+        transition-duration:.2s;
     }
-        .form div{
-            margin:5px 0;
-            padding-left:5px;
+    .cookie,.cookie-open{
+        margin:8px 10px;
+        background:#888;
+        box-shadow:0 0 1px #444;
+        border:1px solid #191919;
+        border-radius:1px;
+    }
+    .cookie:hover,.cookie-open{
+        margin:8px 6px;
+        box-shadow:0 0 3px #222;
+        border-color:#111;
+        transition:border-color .45s;
+    }
+        .cookie-head{
+            cursor:pointer;
+            padding:2px 4px;
+            background:#333;
         }
-            .form label{
-                display:inline-block;
-                width:70px;
+        .cookie-content{
+            display:none;
+            text-align:center;
+            font-size:12px;
+            color:#333;
+        }
+         .cookie-open .cookie-content{
+             display:block;
+         }
+            .cookie-menu{
+                background:#3a3a3a;
+                border-bottom:1px solid #111;
             }
-            .form input[type="text"]{
-                width:125px;
-            }
-            .form input[type="text"].input-value,.form input[type="datetime-local"]{
-                width:195px;
-            }
-            .form input[type="text"], .form input[type="datetime-local"]{
-                margin:0;
-                background:rgba(0,0,0,0.3);
-                border:1px solid #9a9a9a;
-                color:#b9b9b9;
-            }
-            .form-menu{
-                margin:5px 0;
-                text-align:center;
-            }
-                .form-menu a{
+                .cookie-menu a{
                     display:inline-block;
-                    margin:0 10px;
+                    margin:0 3px;
                     transition:color .1s;
                 }
-                .form-menu a:hover{
+                .cookie-menu a:hover{
                     color:#ccc;
                 }
-    /* .content */
-        .cookie{
-            transition-property:box-shadow,border-color,margin;
-            transition-duration:.2s;
-        }
-        .cookie,.cookie-open{
-            margin:8px 10px;
-            background:#888;
-            box-shadow:0 0 1px #444;
-            border:1px solid #191919;
-            border-radius:1px;
-        }
-        .cookie:hover,.cookie-open{
-            margin:8px 6px;
-            box-shadow:0 0 3px #222;
-            border-color:#111;
-            transition:border-color .45s;
-        }
-            .cookie-head{
-                cursor:pointer;
-                padding:2px 4px;
-                background:#333;
+            .cookie-p{
+                margin:5px 0;
+                padding:5px;
+                background:#4a4a4a;
+                border-top:1px solid #333;
+                border-bottom:1px solid #333;
+                color:#999;
             }
-            .cookie-content{
-                display:none;
-                text-align:center;
-                font-size:12px;
-                color:#333;
+                .cookie-value{
+                    word-break:break-all;
+                }
+            .cookie-info{
+                display:inline-block;
+                margin:1px 2px;
+                padding:5px;
+                background:#4a4a4a;
+                box-shadow:1px 1px 0 #999;
+                color:#999;
             }
-             .cookie-open .cookie-content{
-                 display:block;
-             }
-                .cookie-menu{
-                    background:#3a3a3a;
-                    border-bottom:1px solid #111;
-                }
-                    .cookie-menu a{
-                        display:inline-block;
-                        margin:0 3px;
-                        transition:color .1s;
-                    }
-                    .cookie-menu a:hover{
-                        color:#ccc;
-                    }
-                .cookie-p{
-                    margin:5px 0;
-                    padding:5px;
-                    background:#4a4a4a;
-                    border-top:1px solid #333;
-                    border-bottom:1px solid #333;
-                    color:#999;
-                }
-                    .cookie-value{
-                        word-break:break-all;
-                    }
-                .cookie-info{
-                    display:inline-block;
-                    margin:1px 2px;
-                    padding:5px;
-                    background:#4a4a4a;
-                    box-shadow:1px 1px 0 #999;
-                    color:#999;
-                }
+.foot{
+    padding:2px 5px 3px 0;
+    background:#333;
+    border-top:1px solid #161616;
+    text-align:right;
+    font-size:11px;
+}
