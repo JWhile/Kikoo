@@ -368,10 +368,3 @@ function Cookie(id, cookie, app)
                 .text(this.cookie.value)));
 }
 fus.extend(Cookie, Builder);
-
-/**
- * main
- */
-var kikoo = new KikooApp();
-
-kikoo.load();
