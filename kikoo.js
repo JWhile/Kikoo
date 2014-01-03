@@ -55,6 +55,8 @@ function CookieApp()
         .className('foot')
         .html('By <a href="https://github.com/JWhile">juloo</a>')
         .insert(this);
+
+    this.load();
 }
 // function update():void
 CookieApp.prototype.update = function()
