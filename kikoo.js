@@ -88,7 +88,7 @@ KikooApp.prototype.load = function()
     {
         self.url = new Url(tabs[0].url).parse();
 
-        chrome.cookies.getAll({'domain': self.url.domain}, function(cookies)
+        chrome.cookies.getAll({'domain': self.url.domain || 'localhost'}, function(cookies)
         {
             self.cookies = [];
 
@@ -221,18 +221,20 @@ function KikooForm(app)
             .append(new Builder('label')
                 .text('Valeur'))
             .append(this.value))
-        .append(new Builder('a')
-            .text('Valider')
-            .event('click', function()
-            {
-                self.submit();
-            }))
-        .append(new Builder('a')
-            .text('Annuler')
-            .event('click', function()
-            {
-                self.cancel();
-            }));
+        .append(new Builder('div')
+            .className('form-menu')
+            .append(new Builder('a')
+                .text('Valider')
+                .event('click', function()
+                {
+                    self.submit();
+                }))
+            .append(new Builder('a')
+                .text('Annuler')
+                .event('click', function()
+                {
+                    self.cancel();
+                })));
 }
 // function setCookie(Object|chrome.Cookie cookie)
 KikooForm.prototype.setCookie = function(cookie)
@@ -242,12 +244,12 @@ KikooForm.prototype.setCookie = function(cookie)
     cookie = cookie? cookie.cookie || {} : {};
 
     this.name.set('value', cookie.name || '');
-    this.domain.set('value', cookie.domain || this.app.url.domain);
+    this.domain.set('value', cookie.domain || this.app.url.domain || 'localhost');
     this.path.set('value', cookie.path || '/');
     this.secure.set('checked', !!cookie.secure);
     this.httpOnly.set('checked', !!cookie.httpOnly);
 
-    var d = (cookie.expirationDate? new Date(cookie.expirationDate * 1000) : new Date());
+    var d = (cookie.expirationDate? new Date(cookie.expirationDate * 1000) : new Date(Date.now() + 3600000));
 
     var z = function(num)
     {

@@ -89,6 +89,18 @@ a:hover{
             border:1px solid #9a9a9a;
             color:#b9b9b9;
         }
+        .form-menu{
+            margin:5px 0;
+            text-align:center;
+        }
+            .form-menu a{
+                display:inline-block;
+                margin:0 10px;
+                transition:color .1s;
+            }
+            .form-menu a:hover{
+                color:#ccc;
+            }
 #content{
     padding:5px;
     box-shadow:inset 0 0 4px #333;
