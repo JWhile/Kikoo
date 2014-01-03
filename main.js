@@ -4,6 +4,6 @@
  * main.js
  */
 
-var kikoo = new KikooApp();
+var kikoo = new CookieApp();
 
 kikoo.load();

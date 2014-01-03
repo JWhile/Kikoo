@@ -6,10 +6,10 @@
  * kikoo.js
  */
 
-// class KikooApp
-function KikooApp()
+// class CookieApp
+function CookieApp()
 {
-    this.ui = new KikooUI(this); // :KikooUI
+    this.ui = new CookieUI(this); // :CookieUI
 
     this.url = null; // :Url
 
@@ -18,12 +18,12 @@ function KikooApp()
     this.cookies = []; // :Array<Cookie>
 }
 // function update():void
-KikooApp.prototype.update = function()
+CookieApp.prototype.update = function()
 {
     this.ui.setCookies(this.cookies);
 };
 // function addCookie(Object details):void
-KikooApp.prototype.addCookie = function(details)
+CookieApp.prototype.addCookie = function(details)
 {
     var self = this;
 
@@ -38,7 +38,7 @@ KikooApp.prototype.addCookie = function(details)
     })
 };
 // function delCookie(Cookie cookie, function callback = null):void
-KikooApp.prototype.delCookie = function(cookie, callback)
+CookieApp.prototype.delCookie = function(cookie, callback)
 {
     var self = this;
 
@@ -78,7 +78,7 @@ KikooApp.prototype.delCookie = function(cookie, callback)
     });
 };
 // function load():void
-KikooApp.prototype.load = function()
+CookieApp.prototype.load = function()
 {
     this.ui.insert(document.body);
 
@@ -102,12 +102,12 @@ KikooApp.prototype.load = function()
     });
 };
 
-// class KikooUI extends Builder
-function KikooUI(app)
+// class CookieUI extends Builder
+function CookieUI(app)
 {
     this.super('div');
 
-    this.app = app;
+    this.app = app; // :CookieApp
 
     var self = this;
 
@@ -133,7 +133,7 @@ function KikooUI(app)
                 })))
         .insert(this);
 
-    this.form = new KikooForm(this.app)
+    this.form = new CookieForm(this.app)
         .insert(this);
 
     this.content = new Builder('div')
@@ -146,9 +146,9 @@ function KikooUI(app)
         .html('By <a href="https://github.com/JWhile">juloo</a>')
         .insert(this);
 }
-fus.extend(KikooUI, Builder);
+fus.extend(CookieUI, Builder);
 // function setCookies(Array<Cookie> cookies):void
-KikooUI.prototype.setCookies = function(cookies)
+CookieUI.prototype.setCookies = function(cookies)
 {
     this.content.clear();
 
@@ -165,8 +165,8 @@ KikooUI.prototype.setCookies = function(cookies)
     }
 };
 
-// class KikooForm extends Builder
-function KikooForm(app)
+// class CookieForm extends Builder
+function CookieForm(app)
 {
     this.super('div');
 
@@ -237,7 +237,7 @@ function KikooForm(app)
                 })));
 }
 // function setCookie(Object|chrome.Cookie cookie)
-KikooForm.prototype.setCookie = function(cookie)
+CookieForm.prototype.setCookie = function(cookie)
 {
     this.cookie = cookie;
 
@@ -262,7 +262,7 @@ KikooForm.prototype.setCookie = function(cookie)
     this.css('display', 'block');
 };
 // function submit():void
-KikooForm.prototype.submit = function()
+CookieForm.prototype.submit = function()
 {
     var self = this;
 
@@ -303,13 +303,13 @@ KikooForm.prototype.submit = function()
     this.cancel();
 };
 // function cancel():void
-KikooForm.prototype.cancel = function()
+CookieForm.prototype.cancel = function()
 {
     this.cookie = null;
 
     this.css('display', 'none');
 };
-fus.extend(KikooForm, Builder);
+fus.extend(CookieForm, Builder);
 
 // class Cookie extends Builder
 function Cookie(id, cookie, app)
@@ -318,12 +318,12 @@ function Cookie(id, cookie, app)
 
     this.super('div');
 
-    this.app = app;
+    this.app = app; // :CookieApp
 
-    this.id = id;
-    this.cookie = cookie;
+    this.id = id; // :int
+    this.cookie = cookie; // :chrome.Cookie
 
-    this.open = false;
+    this.open = false; // :boolean
 
     this.className('cookie')
         .append(new Builder('div')
