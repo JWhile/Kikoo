@@ -7,7 +7,7 @@
 // class Kikoo
 function Kikoo()
 {
-    this.main = new MainApp().inser(document.body);
+    this.main = new MainApp().insert(document.body);
     this.cookie = new CookieApp().insert(document.body);
 }
 

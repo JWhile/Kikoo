@@ -64,15 +64,15 @@ CookieApp.prototype.update = function()
 {
     this.content.clear();
 
-    if(cookies.length === 0)
+    if(this.cookies.length === 0)
     {
         this.content.text('Aucun cookie pour ce site.');
     }
     else
     {
-        for(var i = 0; i < cookies.length; ++i)
+        for(var i = 0; i < this.cookies.length; ++i)
         {
-            this.content.append(cookies[i]);
+            this.content.append(this.cookies[i]);
         }
     }
 };
