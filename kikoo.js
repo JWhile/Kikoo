@@ -72,6 +72,8 @@ KikooApp.prototype.update = function()
             this.content.append(this.cookies[i]);
         }
     }
+
+    this.form.cancel();
 };
 // function addCookie(Object details):void
 KikooApp.prototype.addCookie = function(details)
