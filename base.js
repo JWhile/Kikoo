@@ -5,10 +5,11 @@
  */
 
 // class App extends Builder
-function App(name)
+function App(main, name)
 {
     this.super('div');
 
+    this.main = main;
     this.name = name;
 
     this.set('id', name)

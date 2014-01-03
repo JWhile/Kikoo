@@ -12,8 +12,8 @@ function Kikoo()
         .insert(document.body);
 
     this.apps = [
-        new MainApp().insert(this.scroll),
-        new CookieApp().insert(this.scroll)
+        new MainApp(this).insert(this.scroll),
+        new CookieApp(this).insert(this.scroll)
     ];
 
     this.move(0);
@@ -37,19 +37,22 @@ Kikoo.prototype.move = function(index)
 };
 
 // class MainApp extends App
-function MainApp(kikoo)
+function MainApp(main)
 {
-    this.super('main');
+    this.super(main, 'main');
 
-    this.kikoo = kikoo;
+    var self = this;
 
     this.content
         .append(new Builder('p')
             .html('<b>Bienvenue kikoo !</b><br /><i>Choisi une application</i>'))
         .append(new Builder('p')
             .append(new Builder('a')
-                .text('Cookie'))
-            .add('<br /><i>Modifie tes cookies comme un kikoo !</i>'));
+                .text('Cookie')
+                .event('click', function()
+                {
+                    self.main.move(1);
+                })));
 }
 fus.extend(MainApp, App);
 

@@ -7,7 +7,7 @@
  */
 
 // class CookieApp extends app
-function CookieApp()
+function CookieApp(main)
 {
     this.url = null; // :Url
 
@@ -15,7 +15,7 @@ function CookieApp()
 
     this.cookies = []; // :Array<Cookie>
 
-    this.super('cookie');
+    this.super(main, 'cookie');
 
     var self = this;
 
