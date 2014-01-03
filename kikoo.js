@@ -13,7 +13,7 @@ function KikooApp()
 
     this.url = null; // :Url
 
-    this.cookieId = 0;
+    this.cookieId = 0; // :int
 
     this.cookies = []; // :Array<Cookie>
 }
@@ -22,9 +22,11 @@ KikooApp.prototype.update = function()
 {
     this.ui.setCookies(this.cookies);
 };
-// function setCookie(Object details):void
-KikooApp.prototype.setCookie = function(details)
+// function addCookie(Object details):void
+KikooApp.prototype.addCookie = function(details)
 {
+    var self = this;
+
     chrome.cookies.set(details, function(cookie)
     {
         if(cookie == null)
@@ -32,7 +34,7 @@ KikooApp.prototype.setCookie = function(details)
             console.log(chrome.runtime.lastError);
         }
 
-        this.load();
+        self.load();
     })
 };
 // function delCookie(Cookie cookie, function callback = null):void
@@ -121,7 +123,7 @@ function KikooUI(app)
                 .text('Ajouter')
                 .event('click', function()
                 {
-                    self.form.setCookie({});
+                    self.form.setCookie(null);
                 }))
             .append(new Builder('a')
                 .text('Actualiser')
@@ -172,13 +174,21 @@ function KikooForm(app)
 
     this.cookie = null;
 
-    this.name = new Builder('input').set('type', 'text');
-    this.domain = new Builder('input').set('type', 'text');
-    this.path = new Builder('input').set('type', 'text');
-    this.secure = new Builder('input').set('type', 'checkbox');
-    this.httpOnly = new Builder('input').set('type', 'checkbox');
-    this.expirationDate = new Builder('input').set('type', 'date');
-    this.value = new Builder('input').set('type', 'text');
+    this.name = new Builder('input')
+        .set('type', 'text');
+    this.domain = new Builder('input')
+        .set('type', 'text');
+    this.path = new Builder('input')
+        .set('type', 'text');
+    this.secure = new Builder('input')
+        .set('type', 'checkbox');
+    this.httpOnly = new Builder('input')
+        .set('type', 'checkbox');
+    this.expirationDate = new Builder('input')
+        .set('type', 'datetime-local');
+    this.value = new Builder('input')
+        .className('input-value')
+        .set('type', 'text');
 
     var self = this;
 
@@ -229,12 +239,22 @@ KikooForm.prototype.setCookie = function(cookie)
 {
     this.cookie = cookie;
 
+    cookie = cookie? cookie.cookie || {} : {};
+
     this.name.set('value', cookie.name || '');
     this.domain.set('value', cookie.domain || this.app.url.domain);
     this.path.set('value', cookie.path || '/');
     this.secure.set('checked', !!cookie.secure);
     this.httpOnly.set('checked', !!cookie.httpOnly);
-    this.expirationDate.set('value', cookie.expirationDate || new Date());
+
+    var d = (cookie.expirationDate? new Date(cookie.expirationDate * 1000) : new Date());
+
+    var z = function(num)
+    {
+        return (num < 10)? '0'+ num : num;
+    };
+
+    this.expirationDate.set('value', d.getFullYear() +'-'+ z(d.getMonth() + 1) +'-'+ z(d.getDate()) +'T'+ z(d.getHours()) +':'+ z(d.getMinutes()) +':'+ z(d.getSeconds()));
     this.value.set('value', cookie.value || '');
 
     this.css('display', 'block');
@@ -244,19 +264,39 @@ KikooForm.prototype.submit = function()
 {
     var self = this;
 
-    this.app.delCookie(this.cookie, function()
+    var callback = function()
     {
-        self.app.setCookie({
+        var details = {
             'url': self.app.url.url,
             'name': self.name.node.value,
             'domain': self.domain.node.value,
             'path': self.path.node.value,
             'secure': self.secure.node.checked,
             'httpOnly': self.httpOnly.node.checked,
-            'expirationDate': self.name.node.value,
-            'value': self.name.node.value
-        });
-    });
+            'value': self.value.node.value
+        };
+
+        if(self.expirationDate.node.value)
+        {
+            var date = (new Date(self.expirationDate.node.value)).getTime();
+
+            if(date > Date.now())
+            {
+                details['expirationDate'] = date / 1000;
+            }
+        }
+
+        self.app.addCookie(details);
+    };
+
+    if(this.cookie != null)
+    {
+        this.app.delCookie(this.cookie, callback);
+    }
+    else
+    {
+        callback();
+    }
 
     this.cancel();
 };
@@ -286,7 +326,7 @@ function Cookie(id, cookie, app)
     this.className('cookie')
         .append(new Builder('div')
             .className('cookie-head')
-            .text(this.cookie.name)
+            .html(this.cookie.name || '<i>Sans nom</i>')
             .event('click', function()
             {
                 self.open = !self.open;
@@ -301,7 +341,7 @@ function Cookie(id, cookie, app)
                     .text('modifier')
                     .event('click', function()
                     {
-                        self.app.ui.form.setCookie(self.cookie);
+                        self.app.ui.form.setCookie(self);
                     }))
                 .append(new Builder('a')
                     .text('supprimer')
