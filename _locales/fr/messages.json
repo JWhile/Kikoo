@@ -32,14 +32,8 @@
     "label_path": {
         "message": "Chemin"
     },
-    "label_secure": {
-        "message": "Secure"
-    },
-    "label_httponly": {
-        "message": "HttpOnly"
-    },
     "label_expiration": {
-        "message": "Expiration"
+        "message": "Date/heure d'expiration"
     },
     "label_value": {
         "message": "Valeur"
@@ -50,13 +44,13 @@
     "cancel": {
         "message": "Annuler"
     },
+    "no_name": {
+        "message": "Sans nom"
+    },
     "modif": {
         "message": "Modifier"
     },
     "delete": {
         "message": "Supprimer"
-    },
-    "no_name": {
-        "message": "Sans nom"
     }
 }
