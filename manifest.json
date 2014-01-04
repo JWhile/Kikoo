@@ -6,6 +6,8 @@
     "description": "__MSG_slogan__",
     "author": "juloo",
 
+    "default_locale": "en",
+
     "version": "0.1.1",
 
     "icons":
