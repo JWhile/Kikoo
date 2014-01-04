@@ -123,10 +123,16 @@ a:hover{
         transition:border-color .45s;
     }
         .cookie-head{
+            overflow:hidden;
             cursor:pointer;
             padding:2px 4px;
             background:#333;
+            white-space:nowrap;
+            word-break:break-all;
         }
+         .cookie:hover .cookie-head,.cookie-open .cookie-head{
+             white-space:normal;
+         }
         .cookie-content{
             display:none;
             text-align:center;
