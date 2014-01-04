@@ -1,2 +1,62 @@
 {
+    "slogan": {
+        "message": "Modifie tes cookies comme un kikoo !"
+    },
+    "title": {
+        "message": "Clique pour modifier tes cookies comme un kikoo !"
+    },
+    "cookie": {
+        "message": "Cookie"
+    },
+    "add": {
+        "message": "Ajouter"
+    },
+    "refresh": {
+        "message": "Actualiser"
+    },
+    "loading": {
+        "message": "Chargement..."
+    },
+    "by": {
+        "message": "Créé par $1"
+    },
+    "no_cookie": {
+        "message": "Aucun cookie pour ce site."
+    },
+    "label_name": {
+        "message": "Nom"
+    },
+    "label_domain": {
+        "message": "Domaine"
+    },
+    "label_path": {
+        "message": "Chemin"
+    },
+    "label_secure": {
+        "message": "Secure"
+    },
+    "label_httponly": {
+        "message": "HttpOnly"
+    },
+    "label_expiration": {
+        "message": "Expiration"
+    },
+    "label_value": {
+        "message": "Valeur"
+    },
+    "submit": {
+        "message": "Valider"
+    },
+    "cancel": {
+        "message": "Annuler"
+    },
+    "modif": {
+        "message": "Modifier"
+    },
+    "delete": {
+        "message": "Supprimer"
+    },
+    "no_name": {
+        "message": "Sans nom"
+    }
 }
