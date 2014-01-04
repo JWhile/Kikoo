@@ -1,5 +1,7 @@
 # ![Kikoo](/icons/kikoo_32.png) Kikoo!
 
+_v0.1.1_
+
 Modifie tes cookies comme un kikoo !
 
 Extension pour Google Chrome qui permet d'ajouter, de supprimer et de modifier ses cookies facilement.
