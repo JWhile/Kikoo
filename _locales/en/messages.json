@@ -1,9 +1,9 @@
 {
     "slogan": {
-        "message": "Change your cookies like a kikoo !"
+        "message": "Edit your cookies like a kikoo !"
     },
     "title": {
-        "message": "Click to change your cookies"
+        "message": "Click to edit your cookies"
     },
     "cookie": {
         "message": "Cookie"
@@ -48,7 +48,7 @@
         "message": "Empty name"
     },
     "modif": {
-        "message": "Modify"
+        "message": "Edit"
     },
     "delete": {
         "message": "Delete"
