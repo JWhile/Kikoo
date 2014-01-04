@@ -1,0 +1,56 @@
+{
+    "slogan": {
+        "message": "Change your cookies like a kikoo !"
+    },
+    "title": {
+        "message": "Click to change your cookies"
+    },
+    "cookie": {
+        "message": "Cookie"
+    },
+    "add": {
+        "message": "Add"
+    },
+    "refresh": {
+        "message": "Refresh"
+    },
+    "loading": {
+        "message": "Loading..."
+    },
+    "by": {
+        "message": "By $1"
+    },
+    "no_cookie": {
+        "message": "No cookie for this site."
+    },
+    "label_name": {
+        "message": "Name"
+    },
+    "label_domain": {
+        "message": "Domain"
+    },
+    "label_path": {
+        "message": "Path"
+    },
+    "label_expiration": {
+        "message": "Expiration date"
+    },
+    "label_value": {
+        "message": "Value"
+    },
+    "submit": {
+        "message": "Submit"
+    },
+    "cancel": {
+        "message": "Cancel"
+    },
+    "no_name": {
+        "message": "Empty name"
+    },
+    "modif": {
+        "message": "Modify"
+    },
+    "delete": {
+        "message": "Delete"
+    }
+}
