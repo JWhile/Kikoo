@@ -23,18 +23,18 @@ function KikooApp()
         .className('head')
         .append(new Builder('p')
             .className('logo')
-            .html('<b>Kikoo</b>! <span>Cookie</span>'))
+            .html('<b>Kikoo</b>! <span>'+ chrome.i18n.getMessage('cookie') +'</span>'))
         .append(new Builder('div')
             .className('plus')
             .text('+')
             .append(new Builder('a')
-                .text('Ajouter')
+                .text(chrome.i18n.getMessage('add'))
                 .event('click', function()
                 {
                     self.form.setCookie(null);
                 }))
             .append(new Builder('a')
-                .text('Actualiser')
+                .text(chrome.i18n.getMessage('refresh'))
                 .event('click', function()
                 {
                     self.load();
@@ -46,12 +46,12 @@ function KikooApp()
 
     this.content = new Builder('div')
         .className('content')
-        .html('<i>Chargement...</i>')
+        .html('<i>'+ chrome.i18n.getMessage('loading') +'</i>')
         .insert(this);
 
     new Builder('div')
         .className('foot')
-        .html('By <a href="https://github.com/JWhile" target="_blank">juloo</a>')
+        .html(chrome.i18n.getMessage('by', ['<a href="https://github.com/JWhile" target="_blank">juloo</a>']))
         .insert(this);
 
     this.load();
@@ -63,7 +63,7 @@ KikooApp.prototype.update = function()
 
     if(this.cookies.length === 0)
     {
-        this.content.text('Aucun cookie pour ce site.');
+        this.content.text(chrome.i18n.getMessage('no_cookie'));
     }
     else
     {
@@ -189,42 +189,42 @@ function KikooForm(app)
     this.className('form')
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('Nom'))
+                .text(chrome.i18n.getMessage('label_name')))
             .append(this.name))
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('Domaine'))
+                .text(chrome.i18n.getMessage('label_domain')))
             .append(this.domain))
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('Chemin'))
+                .text(chrome.i18n.getMessage('label_path')))
             .append(this.path))
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('Secure'))
+                .text('Secure')) // Pas traduit
             .append(this.secure))
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('HttpOnly'))
+                .text('HttpOnly')) // Pas traduit
             .append(this.httpOnly))
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('Expiration'))
+                .text(chrome.i18n.getMessage('label_expiration')))
             .append(this.expirationDate))
         .append(new Builder('div')
             .append(new Builder('label')
-                .text('Valeur'))
+                .text(chrome.i18n.getMessage('label_valeur')))
             .append(this.value))
         .append(new Builder('div')
             .className('form-menu')
             .append(new Builder('a')
-                .text('Valider')
+                .text(chrome.i18n.getMessage('submit'))
                 .event('click', function()
                 {
                     self.submit();
                 }))
             .append(new Builder('a')
-                .text('Annuler')
+                .text(chrome.i18n.getMessage('cancel'))
                 .event('click', function()
                 {
                     self.cancel();
@@ -324,7 +324,7 @@ function Cookie(id, cookie, app)
     this.className('cookie')
         .append(new Builder('div')
             .className('cookie-head')
-            .html(this.cookie.name || '<i>Sans nom</i>')
+            .html(this.cookie.name || '<i>'+ chrome.i18n.getMessage('no_name') +'</i>')
             .event('click', function()
             {
                 self.open = !self.open;
@@ -336,13 +336,13 @@ function Cookie(id, cookie, app)
             .append(new Builder('div')
                 .className('cookie-menu')
                 .append(new Builder('a')
-                    .text('modifier')
+                    .text(chrome.i18n.getMessage('modif'))
                     .event('click', function()
                     {
                         self.app.form.setCookie(self);
                     }))
                 .append(new Builder('a')
-                    .text('supprimer')
+                    .text(chrome.i18n.getMessage('delete'))
                     .event('click', function()
                     {
                         self.app.delCookie(self);

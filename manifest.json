@@ -3,7 +3,7 @@
 
     "name": "Kikoo!",
     "short_name": "Kikoo",
-    "description": "Modifier ses cookies comme un kikoo !",
+    "description": "__MSG_slogan__",
     "author": "juloo",
 
     "version": "0.1.1",
@@ -25,7 +25,7 @@
 
     "browser_action":
     {
-        "default_title": "Clique pour modifier tes cookies comme un kikoo !",
+        "default_title": "__MSG_title__",
         "default_icon": "icons/kikoo_32.png",
         "default_popup": "kikoo.html"
     }
