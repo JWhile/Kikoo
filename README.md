@@ -1,6 +1,6 @@
 # ![Kikoo](/icons/kikoo_32.png) Kikoo!
 
-_v0.1.1_
+_v0.1.2_
 
 Modifie tes cookies comme un kikoo !
 

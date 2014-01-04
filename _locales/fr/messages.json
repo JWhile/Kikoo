@@ -48,9 +48,9 @@
         "message": "Sans nom"
     },
     "modif": {
-        "message": "modifier"
+        "message": "Modifier"
     },
     "delete": {
-        "message": "supprimer"
+        "message": "Supprimer"
     }
 }
