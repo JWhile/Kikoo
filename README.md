@@ -4,6 +4,13 @@ Modifie tes cookies comme un kikoo !
 
 Extension pour Google Chrome qui permet d'ajouter, de supprimer et de modifier ses cookies facilement.
 
+### Get it!
+
+__Kikoo!__ est dans le Chrome Web Store:
+[Kikoo!](https://chrome.google.com/webstore/detail/kikoo/bplbefadcjgjpihpgndelkalllpgfnke)
+
+### Capture
+
 ![Interface](/captures/interface.png)
 Interface de __Kikoo!__ _(uniquement en gris)_
 
