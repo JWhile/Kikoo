@@ -3,7 +3,7 @@
         "message": "Modifie tes cookies comme un kikoo !"
     },
     "title": {
-        "message": "Clique pour modifier tes cookies comme un kikoo !"
+        "message": "Clique pour modifier tes cookies !"
     },
     "cookie": {
         "message": "Cookie"
@@ -48,9 +48,9 @@
         "message": "Sans nom"
     },
     "modif": {
-        "message": "Modifier"
+        "message": "modifier"
     },
     "delete": {
-        "message": "Supprimer"
+        "message": "supprimer"
     }
 }
