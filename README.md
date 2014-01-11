@@ -1,4 +1,4 @@
-# ![Kikoo](/icons/kikoo_32.png) Kikoo!
+# ![Kikoo](https://raw.github.com/JWhile/Kikoo/master/icons/kikoo_32.png) Kikoo!
 
 _v0.1.2_
 
@@ -13,7 +13,7 @@ __Kikoo!__ est dans le Chrome Web Store:
 
 ### Capture
 
-![Interface](/captures/interface.png)
+![Interface](https://raw.github.com/JWhile/Kikoo/master/captures/interface.png)
 Interface de __Kikoo!__ _(uniquement en gris)_
 
 ### License
